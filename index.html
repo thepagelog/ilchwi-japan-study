@@ -32,8 +32,40 @@ body{background:#FAFCFF;color:#1a1a2e;font-family:'Noto Sans KR',-apple-system,s
 .info-card{background:#ffffff;border:0.5px solid #ddeeff;border-radius:14px;padding:1.25rem 1.5rem;box-shadow:0 2px 12px rgba(91,184,232,0.07)}
 .info-card .clbl{font-size:10px;color:#5a6a7a;margin-bottom:6px;text-transform:uppercase;letter-spacing:.08em;font-weight:600}
 .info-card .cval{font-size:1rem;font-weight:700;color:#1a1a2e;line-height:1.4}
-.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:1.5rem}
 hr.divider{border:none;border-top:0.5px solid #5BB8E822;max-width:760px;margin:0 auto}
+
+/* WHY 카드 */
+.why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-top:1.5rem}
+.why-card{background:#fff;border:0.5px solid #ddeeff;border-radius:16px;padding:1.5rem;box-shadow:0 2px 12px rgba(91,184,232,0.06)}
+.why-card .icon{font-size:1.8rem;margin-bottom:0.75rem}
+.why-card h3{font-size:0.95rem;font-weight:700;color:#1a1a2e;margin-bottom:0.4rem}
+.why-card p{font-size:0.85rem;color:#5a6a7a;line-height:1.7}
+
+/* 커리큘럼 */
+.curriculum{margin-top:1.5rem;display:flex;flex-direction:column;gap:10px}
+.curr-item{display:flex;align-items:flex-start;gap:14px;background:#fff;border:0.5px solid #ddeeff;border-radius:14px;padding:1rem 1.25rem;box-shadow:0 2px 8px rgba(91,184,232,0.05)}
+.curr-num{width:32px;height:32px;border-radius:50%;background:#5BB8E8;color:#fff;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
+.curr-text h4{font-size:0.95rem;font-weight:700;color:#1a1a2e;margin-bottom:2px}
+.curr-text p{font-size:0.82rem;color:#5a6a7a}
+.curr-phase{font-size:0.7rem;letter-spacing:.08em;text-transform:uppercase;color:#5BB8E8;font-weight:700;margin:1.5rem 0 0.75rem;display:flex;align-items:center;gap:6px}
+.curr-phase::before{content:'';display:block;width:14px;height:1.5px;background:#5BB8E8}
+
+/* JLPT 섹션 */
+.jlpt-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:1.5rem}
+.jlpt-card{background:#fff;border:0.5px solid #ddeeff;border-radius:12px;padding:1rem;text-align:center;box-shadow:0 2px 8px rgba(91,184,232,0.05)}
+.jlpt-card .level{font-size:1.3rem;font-weight:900;color:#5BB8E8;margin-bottom:4px}
+.jlpt-card .jdesc{font-size:0.75rem;color:#5a6a7a;line-height:1.5}
+
+/* 태그 */
+.tag{display:inline-block;padding:5px 14px;border-radius:20px;background:#5BB8E818;color:#5BB8E8;font-size:13px;margin:3px;border:1px solid #5BB8E844}
+
+/* 갤러리 */
+.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:1.5rem}
+.gallery-grid .photo{aspect-ratio:4/3;border-radius:10px;overflow:hidden;border:0.5px solid #ddeeff}
+.gallery-grid .photo img{width:100%;height:100%;object-fit:cover}
+.gallery-grid .photo.tall{aspect-ratio:3/4}
+
+/* APPLY */
 .apply{text-align:center;padding:5rem 1.5rem;background:linear-gradient(to bottom,#FAFCFF,#5BB8E80a)}
 .apply h2{font-size:2rem;font-weight:900;letter-spacing:-.03em;margin-bottom:0.75rem}
 .apply p{color:#5a6a7a;margin-bottom:2rem;font-size:1rem}
@@ -44,15 +76,18 @@ footer{text-align:center;padding:2rem;font-size:11px;color:#5a6a7a88}
   .hero-posters img{width:30%}
   .gallery-grid{grid-template-columns:repeat(2,1fr)}
   .info-grid{grid-template-columns:1fr 1fr}
+  .jlpt-grid{grid-template-columns:repeat(3,1fr)}
+  .why-grid{grid-template-columns:1fr}
 }
 </style>
 </head>
 <body>
 
+<!-- HERO -->
 <section class="hero">
   <div class="hero-cloud">☁️</div>
   <h1>일취월장<span>.</span></h1>
-  <p class="hero-sub">こんにちは</p>
+  <p class="hero-sub">こんにちは · 日本語を一緒に学ぼう</p>
   <p class="hero-slogan">일본어 실력이 쑥쑥 자라는<br>회화 &amp; JLPT 연합 스터디 동아리</p>
   <div class="hero-posters">
     <img src="posters/poster_1.jpg" alt="포스터1">
@@ -62,45 +97,159 @@ footer{text-align:center;padding:2rem;font-size:11px;color:#5a6a7a88}
   <a href="https://naver.me/Gzic1xil" class="cta">지금 지원하기 →</a>
 </section>
 
+<!-- 동아리 소개 -->
 <section class="section">
-  <div class="lbl">동아리 소개</div>
+  <div class="lbl">About</div>
   <p class="desc">
-    일본어 독학은 이제 그만! 일취월장은 회화부터 JLPT 자격증까지,
-    함께 공부하며 일본어 실력을 키우는 연합 동아리입니다.<br><br>
-    서울 핫플레이스 카페와 스터디룸에서 매주 만나고,
-    일본 문화 체험과 번개 활동까지 — 공부도 즐겁게!
+    일본어 독학은 이제 그만! 일취월장은 <strong>왕초보부터 고수까지</strong> 함께 성장하는 일본어 연합 동아리예요.<br><br>
+    일식 맛집 탐방, 갬성카페, 일본 문화 체험을 즐기면서 자연스럽게 친해지고—
+    그 사이사이 브이로그, J-POP, 애니로 덕질하며 공부하는 곳이에요.<br><br>
+    <strong>재밌어야 지속된다</strong>는 마음으로, 부담 없이 가볍게 시작해보세요 ☁️
   </p>
 </section>
 
 <hr class="divider">
 
+<!-- 왜 일취월장? -->
+<section class="section">
+  <div class="lbl">Why 일취월장</div>
+  <div class="why-grid">
+    <div class="why-card">
+      <div class="icon">🍱</div>
+      <h3>재밌어야 지속된다</h3>
+      <p>일식 맛집, 갬성카페, 일본 문화 액티비티를 즐기며 자연스럽게 친해져요. 공부보다 먼저 친구를 만드는 곳!</p>
+    </div>
+    <div class="why-card">
+      <div class="icon">🎌</div>
+      <h3>취미 일본어 정복</h3>
+      <p>브이로그, J-POP, 애니, 드라마—내가 좋아하는 걸로 공부해요. 덕질이 곧 공부가 되는 마법!</p>
+    </div>
+    <div class="why-card">
+      <div class="icon">💬</div>
+      <h3>현지 표현 완전정복</h3>
+      <p>짧은 대화부터 언어유희까지, 진짜 일본 사람들이 쓰는 살아있는 표현을 익혀요.</p>
+    </div>
+    <div class="why-card">
+      <div class="icon">🎯</div>
+      <h3>실질적인 성과</h3>
+      <p>10회차 커리큘럼을 마치면 나만의 일본어 브이로그 영상을 찍어요. 눈에 보이는 결과물!</p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- 커리큘럼 -->
+<section class="section">
+  <div class="lbl">Curriculum</div>
+  <p class="desc" style="margin-bottom:0.5rem">처음엔 친해지고, 그 다음엔 일본 현지에서 바로 쓸 수 있는 상황별 표현을 익혀요.</p>
+
+  <div class="curr-phase">Phase 1 — 친해지기 &amp; 취미 일본어</div>
+  <div class="curriculum">
+    <div class="curr-item">
+      <div class="curr-num">1</div>
+      <div class="curr-text">
+        <h4>🍜 일식 맛집 &amp; 갬성카페에서 대화하며 친해지기</h4>
+        <p>아이스브레이킹 + 나의 일본어 레벨 확인, 조별 배정</p>
+      </div>
+    </div>
+    <div class="curr-item">
+      <div class="curr-num">2</div>
+      <div class="curr-text">
+        <h4>🎵 취미 일본어 정복 — J-POP · 애니 · 드라마</h4>
+        <p>좋아하는 콘텐츠로 어휘&amp;표현 공유, 덕질하며 공부해요</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="curr-phase">Phase 2 — 현지 만능 표현 10회차</div>
+  <div class="curriculum">
+    <div class="curr-item"><div class="curr-num">3</div><div class="curr-text"><h4>🚕 택시에서 만능 표현</h4><p>「～までお願いします」목적지 말하기부터 잔돈 계산까지</p></div></div>
+    <div class="curr-item"><div class="curr-num">4</div><div class="curr-text"><h4>🍣 음식점에서 만능 표현</h4><p>주문, 알레르기, 계산 — 일본 식당 완전정복</p></div></div>
+    <div class="curr-item"><div class="curr-num">5</div><div class="curr-text"><h4>🏪 편의점에서 만능 표현</h4><p>계산대 대화, 전자레인지 부탁, 영수증 요청까지</p></div></div>
+    <div class="curr-item"><div class="curr-num">6</div><div class="curr-text"><h4>🛍 쇼핑몰에서 만능 표현</h4><p>사이즈, 색상, 교환·환불 — 쇼핑 일본어 마스터</p></div></div>
+    <div class="curr-item"><div class="curr-num">7</div><div class="curr-text"><h4>🏨 호텔에서 만능 표현</h4><p>체크인부터 룸서비스, 불편사항 말하기까지</p></div></div>
+    <div class="curr-item"><div class="curr-num">8</div><div class="curr-text"><h4>🗼 관광지에서 만능 표현</h4><p>사진 부탁, 길 묻기, 입장권 구매 표현</p></div></div>
+    <div class="curr-item"><div class="curr-num">9</div><div class="curr-text"><h4>☕ 카페에서 만능 표현</h4><p>커스텀 주문, 자리 공유 부탁, 와이파이 묻기</p></div></div>
+    <div class="curr-item"><div class="curr-num">10</div><div class="curr-text"><h4>🚇 지하철·교통에서 만능 표현</h4><p>IC카드, 노선 확인, 환승 물어보기 완전정복</p></div></div>
+  </div>
+
+  <div class="curr-phase">Phase 3 — 마무리</div>
+  <div class="curriculum">
+    <div class="curr-item">
+      <div class="curr-num">✨</div>
+      <div class="curr-text">
+        <h4>🎬 나만의 일본어 브이로그 찍기</h4>
+        <p>10회차 동안 익힌 표현으로 브이로그 영상 제작 — 실력의 증거!</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- JLPT -->
+<section class="section">
+  <div class="lbl">JLPT 병행 준비</div>
+  <p class="desc" style="margin-bottom:0">커리큘럼과 병행해서 레벨별 JLPT 자격증도 준비해요. 어느 레벨이든 OK!</p>
+  <div class="jlpt-grid">
+    <div class="jlpt-card"><div class="level">N5</div><div class="jdesc">기초 단어·문장 읽기</div></div>
+    <div class="jlpt-card"><div class="level">N4</div><div class="jdesc">기본 회화 이해</div></div>
+    <div class="jlpt-card"><div class="level">N3</div><div class="jdesc">일상 대화 가능</div></div>
+    <div class="jlpt-card"><div class="level">N2</div><div class="jdesc">자연스러운 의사소통</div></div>
+    <div class="jlpt-card"><div class="level">N1</div><div class="jdesc">원어민 수준 이해</div></div>
+  </div>
+  <p style="font-size:0.82rem;color:#5a6a7a;margin-top:1rem">* 레벨별 조로 운영되어 나에게 맞는 수준에서 시작할 수 있어요</p>
+</section>
+
+<hr class="divider">
+
+<!-- 모집 정보 -->
 <section class="section">
   <div class="lbl">모집 정보</div>
   <div class="info-grid">
     <div class="info-card"><div class="clbl">모집 기간</div><div class="cval">26년 3월~6월 상시모집</div></div>
     <div class="info-card"><div class="clbl">활동 시작</div><div class="cval">합격 후 조별 투입</div></div>
     <div class="info-card"><div class="clbl">활동 장소</div><div class="cval">서울 핫플레이스</div></div>
-    <div class="info-card"><div class="clbl">활동 내용</div><div class="cval">회화 · JLPT · 문화체험</div></div>
+    <div class="info-card"><div class="clbl">운영 방식</div><div class="cval">레벨별 조 운영</div></div>
   </div>
   <div style="margin-top:1.75rem">
     <div class="lbl">이런 분 환영해요</div>
-    <div><span style="display:inline-block;padding:5px 14px;border-radius:20px;background:#5BB8E818;color:#5BB8E8;font-size:13px;margin:3px;border:1px solid #5BB8E844">일본어 배우고 싶은 대학생</span><span style="display:inline-block;padding:5px 14px;border-radius:20px;background:#5BB8E818;color:#5BB8E8;font-size:13px;margin:3px;border:1px solid #5BB8E844">왕초보~고수 실력무관</span><span style="display:inline-block;padding:5px 14px;border-radius:20px;background:#5BB8E818;color:#5BB8E8;font-size:13px;margin:3px;border:1px solid #5BB8E844">J-pop/애니 팬</span><span style="display:inline-block;padding:5px 14px;border-radius:20px;background:#5BB8E818;color:#5BB8E8;font-size:13px;margin:3px;border:1px solid #5BB8E844">JLPT 준비생</span></div>
-  </div>
-</section>
-
-<section class="section" style="padding-top:0">
-  <div class="lbl">활동 사진</div>
-  <div class="gallery-grid">
-    <div style="aspect-ratio:4/3;border-radius:10px;overflow:hidden;border:0.5px solid #ddeeff"><img src="photos/photo_1.jpg" alt="활동사진" style="width:100%;height:100%;object-fit:cover"></div><div style="aspect-ratio:4/3;border-radius:10px;overflow:hidden;border:0.5px solid #ddeeff"><img src="photos/photo_2.jpg" alt="활동사진" style="width:100%;height:100%;object-fit:cover"></div><div style="aspect-ratio:4/3;border-radius:10px;overflow:hidden;border:0.5px solid #ddeeff"><img src="photos/photo_3.jpg" alt="활동사진" style="width:100%;height:100%;object-fit:cover"></div><div style="aspect-ratio:4/3;border-radius:10px;overflow:hidden;border:0.5px solid #ddeeff"><img src="photos/photo_4.jpg" alt="활동사진" style="width:100%;height:100%;object-fit:cover"></div><div style="aspect-ratio:4/3;border-radius:10px;overflow:hidden;border:0.5px solid #ddeeff"><img src="photos/photo_5.jpg" alt="활동사진" style="width:100%;height:100%;object-fit:cover"></div><div style="aspect-ratio:4/3;border-radius:10px;overflow:hidden;border:0.5px solid #ddeeff"><img src="photos/photo_6.jpg" alt="활동사진" style="width:100%;height:100%;object-fit:cover"></div><div style="aspect-ratio:4/3;border-radius:10px;overflow:hidden;border:0.5px solid #ddeeff"><img src="photos/photo_7.jpg" alt="활동사진" style="width:100%;height:100%;object-fit:cover"></div><div style="aspect-ratio:4/3;border-radius:10px;overflow:hidden;border:0.5px solid #ddeeff"><img src="photos/photo_8.jpg" alt="활동사진" style="width:100%;height:100%;object-fit:cover"></div>
+    <div>
+      <span class="tag">일본어 배우고 싶은 대학생</span>
+      <span class="tag">왕초보~고수 실력무관</span>
+      <span class="tag">J-pop / 애니 팬</span>
+      <span class="tag">JLPT 준비생</span>
+      <span class="tag">서울에서 정기적으로 참여 가능한 분</span>
+      <span class="tag">최소 월 1회 참석 가능한 분</span>
+    </div>
   </div>
 </section>
 
 <hr class="divider">
 
+<!-- 활동 사진 -->
+<section class="section">
+  <div class="lbl">활동 사진</div>
+  <div class="gallery-grid">
+    <div class="photo"><img src="photos/photo_1.jpg" alt="활동사진"></div>
+    <div class="photo"><img src="photos/photo_2.jpg" alt="활동사진"></div>
+    <div class="photo"><img src="photos/photo_3.jpg" alt="활동사진"></div>
+    <div class="photo"><img src="photos/photo_4.jpg" alt="활동사진"></div>
+    <div class="photo"><img src="photos/photo_5.jpg" alt="활동사진"></div>
+    <div class="photo"><img src="photos/photo_6.jpg" alt="활동사진"></div>
+    <div class="photo"><img src="photos/photo_7.jpg" alt="활동사진"></div>
+    <div class="photo"><img src="photos/photo_8.jpg" alt="활동사진"></div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- APPLY -->
 <section class="apply">
-  <p style="font-size:0.75rem;letter-spacing:.1em;text-transform:uppercase;color:#5BB8E8;font-weight:700;margin-bottom:1rem">JOIN US</p>
+  <p style="font-size:0.75rem;letter-spacing:.1em;text-transform:uppercase;color:#5BB8E8;font-weight:700;margin-bottom:1rem">JOIN US ☁️</p>
   <h2>함께 일본어 정복할 준비됐나요?</h2>
-  <p>26년 3~6월 상시 모집 중 · 실력 무관 대학생 누구나</p>
+  <p>26년 3~6월 상시 모집 중 · 실력 무관 대학생 누구나<br>재밌게 시작해서, 진짜 실력까지 챙겨가요</p>
   <a href="https://naver.me/Gzic1xil" class="cta">지원폼 바로가기 →</a>
   <br>
   <a href="https://open.kakao.com/o/sKj26gci" class="btn-kakao">카카오 오픈채팅 문의</a>
